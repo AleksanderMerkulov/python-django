@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+}
+a{
+    text-decoration: none;
+}
+aside{
+    float: left;
+    max-width: 20%;
+    width: 100%;
+
+    background: grey;
+    height: 100vh;
+}
+aside li{
+    list-style: none;
+}
+li>a{
+    color: black;
+    transition: 0.3s linear;
+}
+a:hover{
+    text-decoration: none;
+}
+
+#main_page_content{
+    float: right;
+    max-width: 80%;
+    width: 100%;
+}
