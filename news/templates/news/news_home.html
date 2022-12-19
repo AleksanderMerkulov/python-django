@@ -4,4 +4,13 @@
 
 {% block content %}
     <h1>Новости</h1>
+    <div>
+    {% for el in news %}
+        <div>
+            <h2>{{ el.title }}</h2>
+            <h4>{{ el.anons }}</h4>
+        </div>
+    {% endfor %}
+
+    </div>
 {% endblock %}
