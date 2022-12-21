@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+
+{% block style %}
+    <style>
+        .form{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .form-control{
+            margin-bottom: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="form">
+        <h1>Добавление новости</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.title }}
+            {{ form.anons }}
+            {{ form.full_text }}
+            {{ form.date }}
+            <span>{{ error }}</span>
+            <button class="btn btn-success">Добавить статью</button>
+        </form>
+    </div>
+{% endblock %}

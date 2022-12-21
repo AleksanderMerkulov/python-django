@@ -18,6 +18,7 @@ aside li{
 li>a{
     color: black;
     transition: 0.3s linear;
+    font-size: 16px;
 }
 a:hover{
     text-decoration: none;
