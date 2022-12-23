@@ -1,0 +1,14 @@
+.news-container{
+    width: 50%;
+    margin: 1vh auto;
+
+    background: antiquewhite;
+}
+
+.news-container h2{
+    font-size: 28px;
+}
+
+.news-container h4{
+    font-size: 16px;
+}

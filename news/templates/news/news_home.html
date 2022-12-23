@@ -6,9 +6,10 @@
     <h1>Новости</h1>
     <div>
     {% for el in news %}
-        <div>
+        <div class="news-container">
             <h2>{{ el.title }}</h2>
             <h4>{{ el.anons }}</h4>
+            <a href="{% url 'news_detail' el.id %}">Подробнее</a>
         </div>
     {% endfor %}
 

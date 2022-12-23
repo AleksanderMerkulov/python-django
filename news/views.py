@@ -1,10 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import Articles
 from .forms import ArticlesForm
+from django.views.generic import DetailView
 
 def news_home(request):
-    news = Articles.objects.all()
-    return render(request, 'news/news_home.html', {'news':news})
+    news = Articles.objects.order_by('-date')
+    return render(request, 'news/news_home.html', {'news': news})
+
+
+class NewsDetailView(DetailView):
+    model = Articles
+    template_name = 'news/news_detail_view'
+    context_object_name = 'article'
 
 
 def news_adder(request):
@@ -13,7 +20,7 @@ def news_adder(request):
         form = ArticlesForm(request.POST)
         if form.is_valid():
             form.save()
-            redirect('main')
+            return redirect('main')
         else:
             error = 'Форма содержит ошибку'
 
@@ -21,8 +28,8 @@ def news_adder(request):
     form = ArticlesForm()
 
     data = {
-        'form':form,
-        'error':error
+        'form': form,
+        'error': error
     }
 
     return render(request, 'news/news_add.html', data)
