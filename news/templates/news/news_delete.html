@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+
+{% block style %}
+    <style>
+        .form{
+            width: 50%;
+            margin: 0 auto;
+        }
+        .form-control{
+            margin-bottom: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="form">
+        <h1>Удалить новости</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button class="btn btn-success">Удалить статью</button>
+        </form>
+    </div>
+{% endblock %}

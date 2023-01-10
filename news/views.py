@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Articles
-from .forms import ArticlesForm
-from django.views.generic import DetailView
+from .forms import ArticlesForm, FilterForm
+from django.views.generic import DetailView, UpdateView, DeleteView
 
 def news_home(request):
     news = Articles.objects.order_by('-date')
@@ -10,8 +10,25 @@ def news_home(request):
 
 class NewsDetailView(DetailView):
     model = Articles
-    template_name = 'news/news_detail_view'
+    template_name = 'news/news_detail.html'
     context_object_name = 'article'
+
+
+class NewsUpdateView(UpdateView):
+    model = Articles
+    template_name = 'news/news_add.html'
+
+    # fields = ['title', 'anons', 'full_text', 'date']
+    form_class = ArticlesForm
+
+
+class NewsDeleteView(DeleteView):
+    model = Articles
+    success_url = '/news/'
+    template_name = 'news/news_delete.html'
+
+    # form_class = ArticlesForm
+
 
 
 def news_adder(request):
@@ -33,3 +50,8 @@ def news_adder(request):
     }
 
     return render(request, 'news/news_add.html', data)
+
+
+def filter(request):
+    form = FilterForm()
+    return render(request, 'news/filter.html', {'form': form})

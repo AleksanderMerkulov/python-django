@@ -1,5 +1,6 @@
 from .models import Articles
 from django.forms import ModelForm, TextInput, DateTimeInput, Textarea
+from django import forms
 
 
 class ArticlesForm(ModelForm):
@@ -25,3 +26,9 @@ class ArticlesForm(ModelForm):
                 'placeholder': 'Дата'
             }),
         }
+
+
+class FilterForm(forms.Form):
+    date = forms.DateTimeField()
+    name = forms.CharField(max_length=255)
+    check = forms.BooleanField()

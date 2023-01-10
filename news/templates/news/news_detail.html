@@ -7,4 +7,8 @@
     <h1>{{ article.title }}</h1>
     <h2>{{ article.anons }}</h2>
     <p>{{ article.full_text }}</p>
+    <div>
+        <a href="{% url 'news_delete' article.id %}" class="btn btn-danger">Удалить</a>
+        <a href="{% url 'news_update' article.id %}" class="btn">Изменить</a>
+    </div>
 {% endblock %}
